@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol always="true">10</defaultcontrol>
+    <animation type="WindowOpen" reversible="false">
+        <effect type="slide" start="0,-200" end="0,0" time="350" />
+    </animation>
+    <controls>
+        <control type="group">
+            <left>1350</left>
+            <control type="group">
+                <left>5</left>
+                <top>5</top>
+                <control type="image">
+                    <height>210</height>
+                    <width>560</width>
+                    <aspectratio aligny="top">stretch</aspectratio>
+                    <texture>$INFO[Window.Property(tikiskins.fanart)]</texture>
+                </control>
+                <control type="image">
+                    <left>-5</left>
+                    <top>-5</top>
+                    <height>230</height>
+                    <width>570</width>
+                    <texture colordiffuse="D9000000">common/white.png</texture>
+                </control>
+                <control type="image">
+                    <left>530</left>
+                    <top>3</top>
+                    <width>24</width>
+                    <height>24</height>
+                    <align>right</align>
+                    <aligny>top</aligny>
+                    <aspectratio aligny="top">keep</aspectratio>
+                    <texture colordiffuse="B3CCCCCC">common/infinite.png</texture>
+                </control>
+                <control type="image">
+                    <height>210</height>
+                    <aspectratio align="left" aligny="top">keep</aspectratio>
+                    <texture>$INFO[Window.Property(tikiskins.poster)]</texture>
+                </control>
+                <!-- Next Episode -->
+                <control type="group">
+                    <visible>String.IsEqual(Window.Property(tikiskins.nextep_function),next_ep)</visible>
+                    <control type="label">
+                        <top>5</top>
+                        <left>160</left>
+                        <width>375</width>
+                        <height>20</height>
+                        <aligny>bottom</aligny>
+                        <align>left</align>
+                        <font>font14</font>
+                        <label>[B]$ADDON[plugin.video.infinite 33041]...[/B]</label>
+                    </control>
+                    <control type="textbox">
+                        <left>160</left>
+                        <top>70</top>
+                        <width>390</width>
+                        <height>96</height>
+                        <font>font10</font>
+                        <align>left</align>
+                        <aligny>top</aligny>
+                        <label>$INFO[Window.Property(tikiskins.next_episode)]</label>
+                        <textcolor>FFB7B4BB</textcolor>
+                        <autoscroll>true</autoscroll>
+                    </control>
+                    <control type="group">
+                        <left>140</left>
+                        <top>155</top>
+                        <control type="button" id="10">
+                            <description>Close Button</description>
+                            <left>15</left>
+                            <width>100</width>
+                            <height>60</height>
+                            <onleft>12</onleft>
+                            <onright>11</onright>
+                            <label>$ADDON[plugin.video.infinite 32614]</label>
+                            <font>font12_title</font>
+                            <textcolor>FFB7B4BB</textcolor>
+                            <focusedcolor>ffff0000</focusedcolor>
+                            <!-- <texturefocus colordiffuse="FFB7B4BB">common/button-base-fo.png</texturefocus> -->
+                            <texturefocus colordiffuse="$INFO[Window().Property(tikiskins.dialog.highlight)]">common/button-base.png</texturefocus>
+                            <texturenofocus>common/button-base.png</texturenofocus>
+                            <align>center</align>
+                        </control>
+                        <control type="button" id="11">
+                            <description>Play Now Button</description>
+                            <left>130</left>
+                            <width>150</width>
+                            <height>60</height>
+                            <onleft>10</onleft>
+                            <onright>12</onright>
+                            <label>$ADDON[plugin.video.infinite 32764]</label>
+                            <font>font12_title</font>
+                            <textcolor>FFB7B4BB</textcolor>
+                            <focusedcolor>ffff0000</focusedcolor>
+                            <!-- <texturefocus colordiffuse="FFB7B4BB">common/button-base-fo.png</texturefocus> -->
+                            <texturefocus colordiffuse="$INFO[Window().Property(tikiskins.dialog.highlight)]">common/button-base.png</texturefocus>
+                            <texturenofocus>common/button-base.png</texturenofocus>
+                            <align>center</align>
+                        </control>
+                        <control type="button" id="12">
+                            <description>Cancel Button</description>
+                            <left>295</left>
+                            <width>120</width>
+                            <height>60</height>
+                            <onleft>11</onleft>
+                            <onright>10</onright>
+                            <label>$ADDON[plugin.video.infinite 32840]</label>
+                            <font>font12_title</font>
+                            <textcolor>FFB7B4BB</textcolor>
+                            <focusedcolor>ffff0000</focusedcolor>
+                            <!-- <texturefocus colordiffuse="FFB7B4BB">common/button-base-fo.png</texturefocus> -->
+                            <texturefocus colordiffuse="$INFO[Window().Property(tikiskins.dialog.highlight)]">common/button-base.png</texturefocus>
+                            <texturenofocus>common/button-base.png</texturenofocus>
+                            <align>center</align>
+                        </control>
+                    </control>
+                </control>
+                <!-- Confirm -->
+                <control type="group">
+                    <visible>String.IsEqual(Window.Property(tikiskins.nextep_function),confirm)</visible>
+                    <control type="label">
+                        <top>5</top>
+                        <left>160</left>
+                        <width>375</width>
+                        <height>20</height>
+                        <aligny>bottom</aligny>
+                        <align>left</align>
+                        <font>font14</font>
+                        <label>[B]$INFO[Window.Property(tikiskins.title)][/B]</label>
+                    </control>
+                    <control type="label">
+                        <top>80</top>
+                        <left>160</left>
+                        <width>390</width>
+                        <height>10</height>
+                        <font>font12</font>
+                        <textcolor>FFB7B4BB</textcolor>
+                        <label>[B]$ADDON[plugin.video.infinite 32802][/B]</label>
+                    </control>
+                    <control type="group">
+                        <left>140</left>
+                        <top>155</top>
+                        <control type="button" id="10">
+                            <description>Yes Button</description>
+                            <left>15</left>
+                            <width>175</width>
+                            <height>60</height>
+                            <onleft>11</onleft>
+                            <onright>11</onright>
+                            <label>$ADDON[plugin.video.infinite 32824]</label>
+                            <font>font12_title</font>
+                            <textcolor>FFB7B4BB</textcolor>
+                            <focusedcolor>ffff0000</focusedcolor>
+                            <!-- <texturefocus colordiffuse="FFB7B4BB">common/button-base-fo.png</texturefocus> -->
+                            <texturefocus colordiffuse="$INFO[Window().Property(tikiskins.dialog.highlight)]">common/button-base.png</texturefocus>
+                            <texturenofocus>common/button-base.png</texturenofocus>
+                            <align>center</align>
+                        </control>
+                        <control type="button" id="11">
+                            <description>No Button</description>
+                            <left>215</left>
+                            <width>175</width>
+                            <height>60</height>
+                            <onleft>10</onleft>
+                            <onright>10</onright>
+                            <label>$ADDON[plugin.video.infinite 32828]</label>
+                            <font>font12_title</font>
+                            <textcolor>FFB7B4BB</textcolor>
+                            <focusedcolor>ffff0000</focusedcolor>
+                            <!-- <texturefocus colordiffuse="FFB7B4BB">common/button-base-fo.png</texturefocus> -->
+                            <texturefocus colordiffuse="$INFO[Window().Property(tikiskins.dialog.highlight)]">common/button-base.png</texturefocus>
+                            <texturenofocus>common/button-base.png</texturenofocus>
+                            <align>center</align>
+                        </control>
+                    </control>
+                </control>
+                <control type="progress" id="5000">
+                    <width>560</width>
+                    <top>214</top>
+                    <left>0</left>
+                    <height>7</height>
+                    <reveal>true</reveal>
+                    <texturebg colordiffuse="FF302F2F">common/white.png</texturebg>
+                    <midtexture colordiffuse="FF4169E1">common/white.png</midtexture>
+                </control>
+            </control>
+        </control>
+    </controls>
+</window>

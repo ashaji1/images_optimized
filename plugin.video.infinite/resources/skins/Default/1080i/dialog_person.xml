@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol always="true">10</defaultcontrol>
+    <animation type="WindowOpen" reversible="false">
+        <effect type="fade" start="0" end="100" time="400" tween="sine" easing="in" />
+        <effect type="zoom" start="0" end="100" time="400" center="auto" tween="quadratic" easing="out" />
+    </animation>
+    <controls>
+        <!-- Background -->
+        <control type="group">
+            <width>1920</width>
+            <height>1080</height>
+            <control type="image">
+                <texture>common/black.png</texture>
+            </control>
+            <control type="image">
+                <texture>$INFO[Window.Property(tikiskins.person.fanart)]</texture>
+                <animation effect="fade" start="0" end="20" time="0" tween="sine">WindowOpen</animation>
+            </control>
+        </control>
+        <control type="group">
+            <top>400</top>
+            <animation effect="slide" reversible="true" start="0,0" end="0,-395" time="200" condition="Control.HasFocus(50)">conditional</animation>
+            <animation effect="slide" reversible="true" start="0,0" end="0,-760" time="200" condition="Control.HasFocus(2050) | Control.HasFocus(3050) | Control.HasFocus(4050)">conditional</animation>
+            <animation effect="slide" reversible="true" start="0,0" end="0,-1580" time="200" condition="Control.HasFocus(2051) | Control.HasFocus(3051) | Control.HasFocus(4051)">conditional</animation>
+            <animation effect="slide" reversible="true" start="0,0" end="0,-2400" time="200" condition="Control.HasFocus(2052) | Control.HasFocus(3052) | Control.HasFocus(4052)">conditional</animation>
+            <animation effect="slide" reversible="true" start="0,0" end="0,-2865" time="200" condition="Control.HasFocus(2053) | Control.HasFocus(3053) | Control.HasFocus(4053)">conditional</animation>
+            <!-- Buttons -->
+            <control type="group">
+                <animation effect="fade" start="100" end="0" time="200" tween="sine" condition="Control.HasFocus(50)">conditional</animation>
+                <top>40</top>
+                <control type="button" id="10">
+                    <description>Images</description>
+                    <left>300</left>
+                    <width>373</width>
+                    <height>115</height>
+                    <onleft>11</onleft>
+                    <onright>11</onright>
+                    <ondown>50</ondown>
+                    <label>$ADDON[plugin.video.infinite 32798]</label>
+                    <font>font14</font>
+                    <textcolor>FFB7B4BB</textcolor>
+                    <focusedcolor>FF302F2F</focusedcolor>
+                    <texturefocus colordiffuse="FFB7B4BB">common/button-base-fo.png</texturefocus>
+                    <texturenofocus colordiffuse="FF302F2F">common/button-base.png</texturenofocus>
+                    <align>center</align>
+                </control>
+                <control type="button" id="11">
+                    <description>Tagged Images</description>
+                    <left>600</left>
+                    <width>373</width>
+                    <height>115</height>
+                    <onleft>10</onleft>
+                    <onright>10</onright>
+                    <ondown>50</ondown>
+                    <label>$ADDON[plugin.video.infinite 33045] $ADDON[plugin.video.infinite 32798]</label>
+                    <font>font14</font>
+                    <textcolor>FFB7B4BB</textcolor>
+                    <focusedcolor>FF302F2F</focusedcolor>
+                    <texturefocus colordiffuse="FFB7B4BB">common/button-base-fo.png</texturefocus>
+                    <texturenofocus colordiffuse="FF302F2F">common/button-base.png</texturenofocus>
+                    <align>center</align>
+                </control>
+            </control>
+            <!-- Biography -->
+            <control type="group">
+                <animation effect="fade" start="100" end="0" time="200" tween="sine" condition="Control.HasFocus(2050) | Control.HasFocus(3050) | Control.HasFocus(4050)">conditional</animation>
+                <top>210</top>
+                <left>50</left>
+                <control type="label">
+                    <width max="1160">auto</width>
+                    <height>20</height>
+                    <font>font14</font>
+                    <textcolor>FFCCCCCC</textcolor>
+                    <align>left</align>
+                    <aligny>bottom</aligny>
+                    <label>[B]$ADDON[plugin.video.infinite 32797][/B]</label>
+                </control>
+                <control type="button" id="50">
+                    <top>50</top>
+                    <width>1180</width>
+                    <height>300</height>
+                    <onup>10</onup>
+                    <ondown condition="!Integer.IsGreater(Container(2050).NumItems,0)">3050</ondown>
+                    <ondown condition="Integer.IsGreater(Container(2050).NumItems,0)">2050</ondown>
+                    <texturefocus colordiffuse="FFB7B4BB">common/white.png</texturefocus>
+                    <texturenofocus colordiffuse="FF302F2F">common/white.png</texturenofocus>
+                </control>
+                <control type="textbox">
+                    <top>60</top>
+                    <left>15</left>
+                    <width>1150</width>
+                    <height>270</height>
+                    <font>font14</font>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <textcolor>FFB7B4BB</textcolor>
+                    <label>$INFO[Window.Property(tikiskins.person.biography)]</label>
+                    <visible>!Control.HasFocus(50)</visible>
+                </control>
+                <control type="textbox">
+                    <top>60</top>
+                    <left>15</left>
+                    <width>1150</width>
+                    <height>270</height>
+                    <font>font14</font>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <textcolor>FF302F2F</textcolor>
+                    <label>$INFO[Window.Property(tikiskins.person.biography)]</label>
+                    <autoscroll time="2000" delay="12000" repeat="5000">true</autoscroll>
+                    <visible>Control.HasFocus(50)</visible>
+                </control>
+            </control>
+            <!-- More from Movies -->
+            <control type="group">
+                <animation effect="fade" start="100" end="0" time="200" tween="sine" condition="Control.HasFocus(2051) | Control.HasFocus(3051) | Control.HasFocus(4051)">conditional</animation>
+                <left>50</left>
+                <top>590</top>
+                <control type="image">
+                    <left>60</left>
+                    <top>145</top>
+                    <width>100</width>
+                    <height>100</height>
+                    <visible>String.IsEqual(Window.Property(tikiskins.person.more_from_movies.number),)</visible>
+                    <animation effect="fade" time="320" delay="400">Visible</animation>
+                    <animation effect="rotate" end="-360" center="auto" time="2000" loop="true" reversible="false" condition="true">Conditional</animation>
+                    <texture colordiffuse="FFFAFAFA">spinners/busy.png</texture>
+                    <animation effect="fade" start="70" time="1200" condition="true" pulse="true">Conditional</animation>
+                </control>
+                <control type="button" id="3050">
+                    <left>-100</left>
+                    <width>1</width>
+                    <height>1</height>
+                    <width>373</width>
+                    <height>115</height>
+                    <onup>50</onup>
+                    <ondown condition="!Integer.IsGreater(Container(2051).NumItems,0)">3051</ondown>
+                    <ondown condition="Integer.IsGreater(Container(2051).NumItems,0)">2051</ondown>
+                    <texturefocus colordiffuse="FFB7B4BB">common/button-base-fo.png</texturefocus>
+                </control>
+                <control type="label">
+                    <width min="30" max="1160">auto</width>
+                    <height>20</height>
+                    <font>font14</font>
+                    <label>[B]$ADDON[plugin.video.infinite 32028][/B] $INFO[Window.Property(tikiskins.person.more_from_movies.number)]</label>
+                    <visible>!Control.HasFocus(2050)</visible>
+                </control>
+                <control type="label">
+                    <width min="30" max="1160">auto</width>
+                    <height>20</height>
+                    <font>font14</font>
+                    <label>[B]$ADDON[plugin.video.infinite 32028][/B]  |  [I]$INFO[Container(2050).ListItem.Property(tikiskins.person.name)] • $INFO[Container(2050).ListItem.Property(tikiskins.person.release_date)] • $INFO[Container(2050).ListItem.Property(tikiskins.person.vote_average)][/I]</label>
+                    <visible>Control.HasFocus(2050)</visible>
+                </control>
+                <control type="label">
+                    <left>510</left>
+                    <top>200</top>
+                    <width max="1000">auto</width>
+                    <height>20</height>
+                    <font>font14</font>
+                    <textcolor>FFB7B4BB</textcolor>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <label>$ADDON[plugin.video.infinite 32760]</label>
+                    <visible>String.IsEqual(Window.Property(tikiskins.person.more_from_movies.number),(x00))</visible>
+                </control>
+                <control type="panel" id="2050">
+                    <visible>Integer.IsGreater(Container(2050).NumItems,0)</visible>
+                    <pagecontrol>4050</pagecontrol>
+                    <top>40</top>
+                    <width>1180</width>
+                    <height>720</height>
+                    <onup>50</onup>
+                    <ondown condition="Control.IsVisible(4050)">4050</ondown>
+                    <ondown condition="!Integer.IsGreater(Container(2051).NumItems,0)">3051</ondown>
+                    <ondown condition="Integer.IsGreater(Container(2051).NumItems,0)">2051</ondown>
+                    <viewtype label="">list</viewtype>
+                    <scrolltime>200</scrolltime>
+                    <orientation>horizontal</orientation>
+                    <itemlayout height="360" width="236">
+                        <control type="image">
+                            <left>6</left>
+                            <top>6</top>
+                            <width>224</width>
+                            <height>348</height>
+                            <aspectratio>scale</aspectratio>
+                            <texture>$INFO[ListItem.Property(tikiskins.person.thumbnail)]</texture>
+                        </control>
+                        <control type="image">
+                            <left>6</left>
+                            <top>320</top>
+                            <height>40</height>
+                            <width>224</width>
+                            <texture colordiffuse="FF302F2F">common/white.png</texture>
+                        </control>
+                        <control type="label">
+                            <left>6</left>
+                            <top>330</top>
+                            <width>226</width>
+                            <height>20</height>
+                            <font>font10</font>
+                            <align>center</align>
+                            <aligny>center</aligny>
+                            <textcolor>FFB7B4BB</textcolor>
+                            <label>$INFO[ListItem.Property(tikiskins.person.name)]</label>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout height="360" width="236">
+                        <control type="image">
+                            <width>236</width>
+                            <height>360</height>
+                            <texture colordiffuse="FFB7B4BB">common/white.png</texture>
+                        </control>
+                        <control type="image">
+                            <left>6</left>
+                            <top>6</top>
+                            <width>224</width>
+                            <height>348</height>
+                            <aspectratio>scale</aspectratio>
+                            <texture>$INFO[ListItem.Property(tikiskins.person.thumbnail)]</texture>
+                        </control>
+                        <control type="image">
+                            <left>6</left>
+                            <top>320</top>
+                            <height>40</height>
+                            <width>224</width>
+                            <texture colordiffuse="FFB7B4BB">common/white.png</texture>
+                        </control>
+                        <control type="label">
+                            <left>6</left>
+                            <top>330</top>
+                            <width>226</width>
+                            <height>20</height>
+                            <font>font10</font>
+                            <align>center</align>
+                            <aligny>center</aligny>
+                            <textcolor>FF302F2F</textcolor>
+                            <label>$INFO[ListItem.Property(tikiskins.person.name)]</label>
+                        </control>
+                    </focusedlayout>
+                </control>
+                <control type="scrollbar" id="4050">
+                    <left>-5</left>
+                    <top>760</top>
+                    <width>1186</width>
+                    <height>30</height>
+                    <onup>2050</onup>
+                    <ondown condition="!Integer.IsGreater(Container(2051).NumItems,0)">3051</ondown>
+                    <ondown condition="Integer.IsGreater(Container(2051).NumItems,0)">2051</ondown>
+                    <texturesliderbackground border="15">scrollbars/scrollbaruni-bg.png</texturesliderbackground>
+                    <texturesliderbar border="15">scrollbars/scrollbaruni-bar.png</texturesliderbar>
+                    <texturesliderbarfocus colordiffuse="FFB7B4BB" border="15">scrollbars/scrollbaruni-bar-focus.png</texturesliderbarfocus>
+                    <textureslidernib>scrollbars/scrollbaruni-nib.png</textureslidernib>
+                    <textureslidernibfocus>scrollbars/scrollbaruni-nib.png</textureslidernibfocus>
+                    <showonepage>false</showonepage>
+                    <orientation>Horizontal</orientation>
+                    <visible>Control.IsVisible(2050)</visible>
+                </control>
+            </control>
+            <!-- More from TV Shows -->
+            <control type="group">
+                <animation effect="fade" start="100" end="0" time="200" tween="sine" condition="Control.HasFocus(2052) | Control.HasFocus(3052) | Control.HasFocus(4052)">conditional</animation>
+                <left>50</left>
+                <top>1410</top>
+                <control type="image">
+                    <left>60</left>
+                    <top>145</top>
+                    <width>100</width>
+                    <height>100</height>
+                    <visible>String.IsEqual(Window.Property(tikiskins.person.more_from_tvshows.number),)</visible>
+                    <animation effect="fade" time="320" delay="400">Visible</animation>
+                    <animation effect="rotate" end="-360" center="auto" time="2000" loop="true" reversible="false" condition="true">Conditional</animation>
+                    <texture colordiffuse="FFFAFAFA">spinners/busy.png</texture>
+                    <animation effect="fade" start="70" time="1200" condition="true" pulse="true">Conditional</animation>
+                </control>
+                <control type="button" id="3051">
+                    <left>-100</left>
+                    <width>1</width>
+                    <height>1</height>
+                    <width>373</width>
+                    <height>115</height>
+                    <onup condition="!Integer.IsGreater(Container(2050).NumItems,0)">3050</onup>
+                    <onup condition="Integer.IsGreater(Container(2050).NumItems,0)">2050</onup>
+                    <ondown condition="!Integer.IsGreater(Container(2052).NumItems,0)">3052</ondown>
+                    <ondown condition="Integer.IsGreater(Container(2052).NumItems,0)">2052</ondown>
+                    <texturefocus colordiffuse="FFB7B4BB">common/button-base-fo.png</texturefocus>
+                </control>
+                <control type="label">
+                    <width min="30" max="1160">auto</width>
+                    <height>20</height>
+                    <font>font14</font>
+                    <label>[B]$ADDON[plugin.video.infinite 32029][/B] $INFO[Window.Property(tikiskins.person.more_from_tvshows.number)]</label>
+                    <visible>!Control.HasFocus(2051)</visible>
+                </control>
+                <control type="label">
+                    <width min="30" max="1160">auto</width>
+                    <height>20</height>
+                    <font>font14</font>
+                    <label>[B]$ADDON[plugin.video.infinite 32029][/B]  |  [I]$INFO[Container(2051).ListItem.Property(tikiskins.person.name)] • $INFO[Container(2051).ListItem.Property(tikiskins.person.release_date)] • $INFO[Container(2051).ListItem.Property(tikiskins.person.vote_average)][/I]</label>
+                    <visible>Control.HasFocus(2051)</visible>
+                </control>
+                <control type="label">
+                    <left>510</left>
+                    <top>200</top>
+                    <width max="1000">auto</width>
+                    <height>20</height>
+                    <font>font14</font>
+                    <textcolor>FFB7B4BB</textcolor>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <label>$ADDON[plugin.video.infinite 32760]</label>
+                    <visible>String.IsEqual(Window.Property(tikiskins.person.more_from_tvshows.number),(x00))</visible>
+                </control>
+                <control type="panel" id="2051">
+                    <visible>Integer.IsGreater(Container(2051).NumItems,0)</visible>
+                    <pagecontrol>4051</pagecontrol>
+                    <top>40</top>
+                    <width>1180</width>
+                    <height>720</height>
+                    <onup condition="!Integer.IsGreater(Container(2050).NumItems,0)">3050</onup>
+                    <onup condition="Integer.IsGreater(Container(2050).NumItems,0)">2050</onup>
+                    <ondown condition="Control.IsVisible(4051)">4051</ondown>
+                    <ondown condition="!Integer.IsGreater(Container(2052).NumItems,0)">3052</ondown>
+                    <ondown condition="Integer.IsGreater(Container(2052).NumItems,0)">2052</ondown>
+                    <viewtype label="">list</viewtype>
+                    <scrolltime>200</scrolltime>
+                    <orientation>horizontal</orientation>
+                    <itemlayout height="360" width="236">
+                        <control type="image">
+                            <left>6</left>
+                            <top>6</top>
+                            <width>224</width>
+                            <height>348</height>
+                            <aspectratio>scale</aspectratio>
+                            <texture>$INFO[ListItem.Property(tikiskins.person.thumbnail)]</texture>
+                        </control>
+                        <control type="image">
+                            <left>6</left>
+                            <top>320</top>
+                            <height>40</height>
+                            <width>224</width>
+                            <texture colordiffuse="FF302F2F">common/white.png</texture>
+                        </control>
+                        <control type="label">
+                            <left>6</left>
+                            <top>330</top>
+                            <width>226</width>
+                            <height>20</height>
+                            <font>font10</font>
+                            <align>center</align>
+                            <aligny>center</aligny>
+                            <textcolor>FFB7B4BB</textcolor>
+                            <label>$INFO[ListItem.Property(tikiskins.person.name)]</label>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout height="360" width="236">
+                        <control type="image">
+                            <width>236</width>
+                            <height>360</height>
+                            <texture colordiffuse="FFB7B4BB">common/white.png</texture>
+                        </control>
+                        <control type="image">
+                            <left>6</left>
+                            <top>6</top>
+                            <width>224</width>
+                            <height>348</height>
+                            <aspectratio>scale</aspectratio>
+                            <texture>$INFO[ListItem.Property(tikiskins.person.thumbnail)]</texture>
+                        </control>
+                        <control type="image">
+                            <left>6</left>
+                            <top>320</top>
+                            <height>40</height>
+                            <width>224</width>
+                            <texture colordiffuse="FFB7B4BB">common/white.png</texture>
+                        </control>
+                        <control type="label">
+                            <left>6</left>
+                            <top>330</top>
+                            <width>226</width>
+                            <height>20</height>
+                            <font>font10</font>
+                            <align>center</align>
+                            <aligny>center</aligny>
+                            <textcolor>FF302F2F</textcolor>
+                            <label>$INFO[ListItem.Property(tikiskins.person.name)]</label>
+                        </control>
+                    </focusedlayout>
+                </control>
+                <control type="scrollbar" id="4051">
+                    <left>-5</left>
+                    <top>760</top>
+                    <width>1186</width>
+                    <height>30</height>
+                    <onup>2051</onup>
+                    <ondown condition="!Integer.IsGreater(Container(2052).NumItems,0)">3052</ondown>
+                    <ondown condition="Integer.IsGreater(Container(2052).NumItems,0)">2052</ondown>
+                    <texturesliderbackground border="15">scrollbars/scrollbaruni-bg.png</texturesliderbackground>
+                    <texturesliderbar border="15">scrollbars/scrollbaruni-bar.png</texturesliderbar>
+                    <texturesliderbarfocus colordiffuse="FFB7B4BB" border="15">scrollbars/scrollbaruni-bar-focus.png</texturesliderbarfocus>
+                    <textureslidernib>scrollbars/scrollbaruni-nib.png</textureslidernib>
+                    <textureslidernibfocus>scrollbars/scrollbaruni-nib.png</textureslidernibfocus>
+                    <showonepage>false</showonepage>
+                    <orientation>Horizontal</orientation>
+                    <visible>Control.IsVisible(2051)</visible>
+                </control>
+            </control>
+            <!-- IMDb Videos -->
+            <control type="group">
+                <animation effect="fade" start="100" end="0" time="200" tween="sine" condition="Control.HasFocus(2053) | Control.HasFocus(3053) | Control.HasFocus(4053)">conditional</animation>
+                <left>50</left>
+                <top>2230</top>
+                <control type="image">
+                    <left>60</left>
+                    <top>145</top>
+                    <width>100</width>
+                    <height>100</height>
+                    <visible>String.IsEqual(Window.Property(tikiskins.person.imdb_videos.number),)</visible>
+                    <animation effect="fade" time="320" delay="400">Visible</animation>
+                    <animation effect="rotate" end="-360" center="auto" time="2000" loop="true" reversible="false" condition="true">Conditional</animation>
+                    <texture colordiffuse="FFFAFAFA">spinners/busy.png</texture>
+                    <animation effect="fade" start="70" time="1200" condition="true" pulse="true">Conditional</animation>
+                </control>
+                <control type="button" id="3052">
+                    <left>-100</left>
+                    <width>1</width>
+                    <height>1</height>
+                    <onup condition="!Integer.IsGreater(Container(2051).NumItems,0)">3051</onup>
+                    <onup condition="Integer.IsGreater(Container(2051).NumItems,0)">2051</onup>
+                    <ondown condition="!Integer.IsGreater(Container(2053).NumItems,0)">3053</ondown>
+                    <ondown condition="Integer.IsGreater(Container(2053).NumItems,0)">2053</ondown>
+                </control>
+                <control type="label">
+                    <width min="30" max="1160">auto</width>
+                    <height>20</height>
+                    <font>font14</font>
+                    <label>[B]$ADDON[plugin.video.infinite 33032][/B] $INFO[Window.Property(tikiskins.person.imdb_videos.number)]</label>
+                    <visible>!Control.HasFocus(2052)</visible>
+                </control>
+                <control type="label">
+                    <width min="30" max="1160">auto</width>
+                    <height>20</height>
+                    <font>font14</font>
+                    <label>[B]$ADDON[plugin.video.infinite 33032][/B]  |  [I]$INFO[Container(2052).ListItem.Property(tikiskins.person.name)][/I]</label>
+                    <visible>Control.HasFocus(2052)</visible>
+                </control>
+                <control type="label">
+                    <left>510</left>
+                    <top>200</top>
+                    <width max="1000">auto</width>
+                    <height>20</height>
+                    <font>font14</font>
+                    <textcolor>FFB7B4BB</textcolor>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <label>$ADDON[plugin.video.infinite 32760]</label>
+                    <visible>String.IsEqual(Window.Property(tikiskins.person.imdb_videos.number),(x00))</visible>
+                </control>
+                <control type="panel" id="2052">
+                    <visible>Integer.IsGreater(Container(2052).NumItems,0)</visible>
+                    <pagecontrol>4052</pagecontrol>
+                    <top>40</top>
+                    <width>1180</width>
+                    <height>360</height>
+                    <onup condition="!Integer.IsGreater(Container(2051).NumItems,0)">3051</onup>
+                    <onup condition="Integer.IsGreater(Container(2051).NumItems,0)">2051</onup>
+                    <ondown condition="Control.IsVisible(4052)">4052</ondown>
+                    <ondown condition="!Integer.IsGreater(Container(2053).NumItems,0)">3053</ondown>
+                    <ondown condition="Integer.IsGreater(Container(2053).NumItems,0)">2053</ondown>
+                    <viewtype label="">list</viewtype>
+                    <scrolltime>200</scrolltime>
+                    <orientation>horizontal</orientation>
+                    <itemlayout height="360" width="392">
+                        <control type="image">
+                            <left>6</left>
+                            <top>6</top>
+                            <height>348</height>
+                            <width>380</width>
+                            <aspectratio>scale</aspectratio>
+                            <texture>$INFO[ListItem.Property(tikiskins.person.thumbnail)]</texture>
+                        </control>
+                        <control type="image">
+                            <left>6</left>
+                            <top>280</top>
+                            <height>80</height>
+                            <width>380</width>
+                            <texture colordiffuse="FF302F2F">common/white.png</texture>
+                        </control>
+                        <control type="textbox">
+                            <left>6</left>
+                            <top>280</top>
+                            <width>380</width>
+                            <height>75</height>
+                            <font>font12</font>
+                            <align>center</align>
+                            <aligny>center</aligny>
+                            <textcolor>FFB7B4BB</textcolor>
+                            <label>$INFO[ListItem.Property(tikiskins.person.name)]</label>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout height="360" width="392">
+                        <control type="image">
+                            <width>392</width>
+                            <height>360</height>
+                            <texture colordiffuse="FFB7B4BB">common/white.png</texture>
+                        </control>
+                        <control type="image">
+                            <left>6</left>
+                            <top>6</top>
+                            <height>348</height>
+                            <width>380</width>
+                            <aspectratio>scale</aspectratio>
+                            <texture>$INFO[ListItem.Property(tikiskins.person.thumbnail)]</texture>
+                        </control>
+                        <control type="image">
+                            <left>6</left>
+                            <top>280</top>
+                            <height>80</height>
+                            <width>380</width>
+                            <texture colordiffuse="FFB7B4BB">common/white.png</texture>
+                        </control>
+                        <control type="textbox">
+                            <left>6</left>
+                            <top>280</top>
+                            <width>380</width>
+                            <height>75</height>
+                            <font>font12</font>
+                            <align>center</align>
+                            <aligny>center</aligny>
+                            <textcolor>FF302F2F</textcolor>
+                            <label>$INFO[ListItem.Property(tikiskins.person.name)]</label>
+                        </control>
+                    </focusedlayout>
+                </control>
+                <control type="scrollbar" id="4052">
+                    <left>-5</left>
+                    <top>400</top>
+                    <width>1186</width>
+                    <height>30</height>
+                    <onup>2052</onup>
+                    <ondown condition="!Integer.IsGreater(Container(2053).NumItems,0)">3053</ondown>
+                    <ondown condition="Integer.IsGreater(Container(2053).NumItems,0)">2053</ondown>
+                    <texturesliderbackground border="15">scrollbars/scrollbaruni-bg.png</texturesliderbackground>
+                    <texturesliderbar border="15">scrollbars/scrollbaruni-bar.png</texturesliderbar>
+                    <texturesliderbarfocus colordiffuse="FFB7B4BB" border="15">scrollbars/scrollbaruni-bar-focus.png</texturesliderbarfocus>
+                    <textureslidernib>scrollbars/scrollbaruni-nib.png</textureslidernib>
+                    <textureslidernibfocus>scrollbars/scrollbaruni-nib.png</textureslidernibfocus>
+                    <showonepage>false</showonepage>
+                    <orientation>Horizontal</orientation>
+                    <visible>Control.IsVisible(2052)</visible>
+                </control>
+            </control>
+            <!-- More from Directed -->
+            <control type="group">
+                <left>50</left>
+                <top>2690</top>
+                <control type="image">
+                    <left>60</left>
+                    <top>145</top>
+                    <width>100</width>
+                    <height>100</height>
+                    <visible>String.IsEqual(Window.Property(tikiskins.person.more_from_director.number),)</visible>
+                    <animation effect="fade" time="320" delay="400">Visible</animation>
+                    <animation effect="rotate" end="-360" center="auto" time="2000" loop="true" reversible="false" condition="true">Conditional</animation>
+                    <texture colordiffuse="FFFAFAFA">spinners/busy.png</texture>
+                    <animation effect="fade" start="70" time="1200" condition="true" pulse="true">Conditional</animation>
+                </control>
+                <control type="button" id="3053">
+                    <left>-100</left>
+                    <width>1</width>
+                    <height>1</height>
+                    <width>373</width>
+                    <height>115</height>
+                    <onup condition="!Integer.IsGreater(Container(2052).NumItems,0)">3052</onup>
+                    <onup condition="Integer.IsGreater(Container(2052).NumItems,0)">2052</onup>
+                    <ondown>10</ondown>
+                    <texturefocus colordiffuse="FFB7B4BB">common/button-base-fo.png</texturefocus>
+                </control>
+                <control type="label">
+                    <width min="30" max="1160">auto</width>
+                    <height>20</height>
+                    <font>font14</font>
+                    <label>[B]$ADDON[plugin.video.infinite 32028] $ADDON[plugin.video.infinite 32796][/B] $INFO[Window.Property(tikiskins.person.more_from_director.number)]</label>
+                    <visible>!Control.HasFocus(2053)</visible>
+                </control>
+                <control type="label">
+                    <width min="30" max="1160">auto</width>
+                    <height>20</height>
+                    <font>font14</font>
+                    <label>[B]$ADDON[plugin.video.infinite 32028] $ADDON[plugin.video.infinite 32796][/B]  |  [I]$INFO[Container(2053).ListItem.Property(tikiskins.person.name)] • $INFO[Container(2053).ListItem.Property(tikiskins.person.release_date)] • $INFO[Container(2053).ListItem.Property(tikiskins.person.vote_average)][/I]</label>
+                    <visible>Control.HasFocus(2053)</visible>
+                </control>
+                <control type="label">
+                    <left>510</left>
+                    <top>200</top>
+                    <width max="1000">auto</width>
+                    <height>20</height>
+                    <font>font14</font>
+                    <textcolor>FFB7B4BB</textcolor>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <label>$ADDON[plugin.video.infinite 32760]</label>
+                    <visible>String.IsEqual(Window.Property(tikiskins.person.more_from_director.number),(x00))</visible>
+                </control>
+                <control type="panel" id="2053">
+                    <visible>Integer.IsGreater(Container(2053).NumItems,0)</visible>
+                    <pagecontrol>4053</pagecontrol>
+                    <top>40</top>
+                    <width>1180</width>
+                    <height>720</height>
+                    <onup condition="!Integer.IsGreater(Container(2052).NumItems,0)">3052</onup>
+                    <onup condition="Integer.IsGreater(Container(2052).NumItems,0)">2052</onup>
+                    <ondown condition="Control.IsVisible(4053)">4053</ondown>
+                    <ondown>10</ondown>
+                    <viewtype label="">list</viewtype>
+                    <scrolltime>200</scrolltime>
+                    <orientation>horizontal</orientation>
+                    <itemlayout height="360" width="236">
+                        <control type="image">
+                            <left>6</left>
+                            <top>6</top>
+                            <width>224</width>
+                            <height>348</height>
+                            <aspectratio>scale</aspectratio>
+                            <texture>$INFO[ListItem.Property(tikiskins.person.thumbnail)]</texture>
+                        </control>
+                        <control type="image">
+                            <left>6</left>
+                            <top>320</top>
+                            <height>40</height>
+                            <width>224</width>
+                            <texture colordiffuse="FF302F2F">common/white.png</texture>
+                        </control>
+                        <control type="label">
+                            <left>6</left>
+                            <top>330</top>
+                            <width>226</width>
+                            <height>20</height>
+                            <font>font10</font>
+                            <align>center</align>
+                            <aligny>center</aligny>
+                            <textcolor>FFB7B4BB</textcolor>
+                            <label>$INFO[ListItem.Property(tikiskins.person.name)]</label>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout height="360" width="236">
+                        <control type="image">
+                            <width>236</width>
+                            <height>360</height>
+                            <texture colordiffuse="FFB7B4BB">common/white.png</texture>
+                        </control>
+                        <control type="image">
+                            <left>6</left>
+                            <top>6</top>
+                            <width>224</width>
+                            <height>348</height>
+                            <aspectratio>scale</aspectratio>
+                            <texture>$INFO[ListItem.Property(tikiskins.person.thumbnail)]</texture>
+                        </control>
+                        <control type="image">
+                            <left>6</left>
+                            <top>320</top>
+                            <height>40</height>
+                            <width>224</width>
+                            <texture colordiffuse="FFB7B4BB">common/white.png</texture>
+                        </control>
+                        <control type="label">
+                            <left>6</left>
+                            <top>330</top>
+                            <width>226</width>
+                            <height>20</height>
+                            <font>font10</font>
+                            <align>center</align>
+                            <aligny>center</aligny>
+                            <textcolor>FF302F2F</textcolor>
+                            <label>$INFO[ListItem.Property(tikiskins.person.name)]</label>
+                        </control>
+                    </focusedlayout>
+                </control>
+                <control type="scrollbar" id="4053">
+                    <left>-5</left>
+                    <top>760</top>
+                    <width>1186</width>
+                    <height>30</height>
+                    <onup>2053</onup>
+                    <ondown>10</ondown>
+                    <texturesliderbackground border="15">scrollbars/scrollbaruni-bg.png</texturesliderbackground>
+                    <texturesliderbar border="15">scrollbars/scrollbaruni-bar.png</texturesliderbar>
+                    <texturesliderbarfocus colordiffuse="FFB7B4BB" border="15">scrollbars/scrollbaruni-bar-focus.png</texturesliderbarfocus>
+                    <textureslidernib>scrollbars/scrollbaruni-nib.png</textureslidernib>
+                    <textureslidernibfocus>scrollbars/scrollbaruni-nib.png</textureslidernibfocus>
+                    <showonepage>false</showonepage>
+                    <orientation>Horizontal</orientation>
+                    <visible>Control.IsVisible(2053)</visible>
+                </control>
+            </control>
+        </control>
+        <!-- Top Heading & Right Poster -->
+        <control type="group">
+            <control type="image">
+                <left>20</left>
+                <top>20</top>
+                <width>60</width>
+                <height>60</height>
+                <aspectratio aligny="top">keep</aspectratio>
+                <texture>common/infinite.png</texture>
+            </control>
+            <control type="label">
+                <top>100</top>
+                <left>50</left>
+                <width max="1150">auto</width>
+                <height>30</height>
+                <font>font60</font>
+                <textcolor>FFCCCCCC</textcolor>
+                <align>center</align>
+                <aligny>bottom</aligny>
+                <label>[B]$INFO[Window.Property(tikiskins.person.name)][/B]</label>
+            </control>
+            <control type="image">
+                <top>100</top>
+                <left>1250</left>
+                <width>630</width>
+                <aspectratio aligny="top">keep</aspectratio>
+                <texture background="true">$INFO[Window.Property(tikiskins.person.image)]</texture>
+            </control>
+        </control>
+        <!-- Top 3 Lines Info -->
+        <control type="group">
+            <animation effect="fade" start="100" end="0" time="200" tween="sine" condition="!Control.HasFocus(10) + !Control.HasFocus(11)">conditional</animation>
+            <top>220</top>
+            <left>50</left>
+            <control type="label">
+                <width max="1150">auto</width>
+                <height>25</height>
+                <font>font14</font>
+                <textcolor>FFB7B4BB</textcolor>
+                <align>center</align>
+                <label>[I]$INFO[Window.Property(tikiskins.person.place_of_birth)][/I]</label>
+            </control>
+            <control type="grouplist">
+                <top>70</top>
+                <itemgap>0</itemgap>
+                <align>center</align>
+                <orientation>horizontal</orientation>
+                <width max="1150">auto</width>
+                <control type="label">
+                    <width min="29" max="575">auto</width>
+                    <height>25</height>
+                    <font>font14</font>
+                    <textcolor>FFB7B4BB</textcolor>
+                    <label>[I]$INFO[Window.Property(tikiskins.person.gender),[B]$ADDON[plugin.video.infinite 32845]: [/B]][/I]</label>
+                    <visible>!String.IsEmpty(Window.Property(tikiskins.person.gender))</visible>
+                </control>
+                <control type="label">
+                    <width min="29" max="575">auto</width>
+                    <height>25</height>
+                    <font>font14</font>
+                    <textcolor>FFB7B4BB</textcolor>
+                    <label>[I]$INFO[Window.Property(tikiskins.person.age),  •  [B]$ADDON[plugin.video.infinite 32827]: [/B]][/I]</label>
+                    <visible>!String.IsEmpty(Window.Property(tikiskins.person.age))</visible>
+                </control>
+            </control>
+            <control type="grouplist">
+                <top>130</top>
+                <itemgap>0</itemgap>
+                <align>center</align>
+                <orientation>horizontal</orientation>
+                <width max="1150">auto</width>
+                <control type="label">
+                    <width min="29" max="575">auto</width>
+                    <height>25</height>
+                    <font>font14</font>
+                    <textcolor>FFB7B4BB</textcolor>
+                    <label>[I]$INFO[Window.Property(tikiskins.person.birthday),[B]$ADDON[plugin.video.infinite 32825]:[/B] ][/I]</label>
+                    <visible>!String.IsEmpty(Window.Property(tikiskins.person.birthday))</visible>
+                </control>
+                <control type="label">
+                    <width min="29" max="575">auto</width>
+                    <height>25</height>
+                    <font>font14</font>
+                    <textcolor>FFB7B4BB</textcolor>
+                    <label>[I]$INFO[Window.Property(tikiskins.person.deathday),  •  [B]$ADDON[plugin.video.infinite 32826]:[/B] ][/I]</label>
+                    <visible>!String.IsEmpty(Window.Property(tikiskins.person.deathday))</visible>
+                </control>
+            </control>
+        </control>
+    </controls>
+</window>
